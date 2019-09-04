@@ -1,0 +1,86 @@
+      IMPLICIT NONE
+      INCLUDE 'mpif.h'
+      INCLUDE 'INCLUDE_PARAMETER.FI'
+      INCLUDE 'INCLUDE_PARALLEL.FI'
+
+!constant pi=3.14159......
+      REAL*8    PI
+      DATA PI /3.141592653589793/
+
+      REAL*8    KX , KZ , OMEGA
+      COMMON /WAVENUMBER/ KX(NDX) , KZ(NDZ) , OMEGA(NDT)
+	  
+	  REAL*8    KXX , KZZ , OMEGAA , K2
+	  COMMON /WAVENUMBER/ KXX , KZZ , OMEGAA , K2 
+	  
+	  
+! Loop variable
+      INTEGER   II , KK , TT
+	  COMMON /LOOP/ II , KK , TT
+
+! Cess Profiles
+      REAL*8    U , DU , NU_T , DNU_T 
+      COMMON /CESS/ U     (NDY)  &
+                   ,DU    (NDY)  &
+  	               ,NU_T  (NDY)  &
+  	               ,DNU_T (NDY)
+
+! coefficient matrix
+      COMPLEX*16   H , R , RQ , RY , Us , Vt , TRAN_RQ , E11
+      COMMON /MATRIX/ H(NH , NH)  &
+				   ,R(NH , NH)  &
+                   ,RQ(NH , MRY) &
+				   ,RY(NRY , MRY) &
+  	               ,Us(NRY , NRY)  &
+				   ,Vt(MRY , MRY) &
+				   ,TRAN_RQ(MRY , NH) &
+				   ,E11(NRY , NRY)
+
+      REAL*8    S , SIGMA , INV_SIGMA
+      COMMON /MATRIX/ S(NRY) &
+	                 ,SIGMA(NRY , NRY)  &
+					 ,INV_SIGMA(NRY , NRY)
+	
+	  COMPLEX*16    V1 , TRAN_V1 , TRAN_U 
+	  COMMON /MATRIX/ V1(MRY , NRY)  &
+	                 ,TRAN_V1(NRY , MRY)  &
+					 ,TRAN_U(NRY , NRY)
+
+! spectra
+	  COMPLEX*16   SYY , SQQ
+	  COMMON /SPECTRA/ SYY(NRY , NRY) &
+	                  ,SQQ(NH , NH)
+	
+	  COMPLEX*16   EPUU , EPVV , EPWW , EPUV , EPUW , EPVW
+	  COMMON /SPECTRA/ EPUU(NDX , NDZ , NDT)  &
+	                  ,EPVV(NDX , NDZ , NDT)  &
+					  ,EPWW(NDX , NDZ , NDT)  &
+					  ,EPUV(NDX , NDZ , NDT)  &
+					  ,EPUW(NDX , NDZ , NDT)  &
+					  ,EPVW(NDX , NDZ , NDT)
+					  
+					  
+	  REAL*8       TEMP1 , TEMP2
+	  COMMON /TEMPV/  TEMP1(NET) &
+	                 ,TEMP2(NET)
+					  
+
+! RMS velocities
+      REAL*8       ET , ETT
+	  COMMON /VELOCITY/ ET(3 , NET) &
+	                   ,ETT(3 , NET)
+				
+! estimated spectra
+	  REAL*8   U_ES1 , U_ES2 , U_ES3 , U_ES4
+	  COMMON /SPECTRA/ U_ES1(NDX , NDTNP , 3) &
+	                  ,U_ES2(NDX , NDTNP , 3) &
+					  ,U_ES3(NDX , NDTNP , 3) &
+					  ,U_ES4(NDX , NDTNP , 3)	
+	  
+! Chebyshev Matrix and Collocate Points
+      REAL*8       CHEB_POINT , CHEB_MAT1 , CHEB_MAT2
+	  COMMON /CHEB/  CHEB_POINT(NDY)  &
+	                ,CHEB_MAT1(NDY , NDY) &
+					,CHEB_MAT2(NDY , NDY)
+
+

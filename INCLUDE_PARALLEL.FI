@@ -1,0 +1,9 @@
+      ! parallel parameter
+      INTEGER NUMPROCS, IMPI_MYID , iMPI_ErrorInfo , STATUS , &
+               MPI_FH
+       
+      COMMON /PARA_VAR/ NUMPROCS , IMPI_MYID , iMPI_ErrorInfo , STATUS(MPI_STATUS_SIZE) , &
+                         MPI_FH
+						 
+	  INTEGER KK_S , KK_E , TT_S , TT_E
+	  COMMON /MPI_II/ KK_S , KK_E , TT_S , TT_E
