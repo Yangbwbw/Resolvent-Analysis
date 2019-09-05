@@ -1,1 +1,4 @@
 # Resolvent-Analysis
+This is a FORTRAN code for the local-resolvent-based model of spatio-temporal energy spectra. The model is originally proposed by Towne et al.[1] In this model, the spatio temporal energy spectra at the reference plane is given as the input to predict the spatio-temporal energy spectra and root-mean-square velocity at an arbitrary location in a turbulent channel flow.
+We provide the detailed discrete form of this model and implement it to a numerical code. Based on this code, we conduct a parametric study and examine the model sensitivities to the location of the reference plane, the pressure boundary condition the inclusion of pressure fluctuation as an input variable, and the window function used in time frequency Fourier transform.[2]
+We also make our spatio-temporal spectra tensor data available. The velocity-pressure spectra tensor at y+ = 39 are given.
