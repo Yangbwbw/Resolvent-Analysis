@@ -12,7 +12,7 @@ EXECS =  Resolvent
 OBJECT =  Prof_00_Main.o\
           Prof_10_INIT_PARALLEL.o\
           Prof_12_INIT_VARIABLES.o\
-		  Prof_13_RESET_VARIABLES.o\
+	  Prof_13_RESET_VARIABLES.o\
           Prof_30_WRITEFILE.o\
           Prof_99_FINALIZE.o
 default: $(EXECS)
