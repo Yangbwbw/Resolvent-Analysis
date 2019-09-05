@@ -2,8 +2,8 @@
 
 FC          = mpiifort
 FLINKER     = mpiifort
-OPTINCLUDE  = -I/THL7/home/hegw1/Yangbowen/opt/lapack/include
-OPTLINK     = -L/THL7/home/hegw1/Yangbowen/opt/lapack/lib -llapack -lrefblas -lz -lm
+OPTINCLUDE  = -I/path/lapack/include
+OPTLINK     = -L/path/lapack/lib -llapack -lrefblas -lz -lm
 #### End User cenfigurable options ###
 
 FFLAGS =  $(OPTFLAGS)
